@@ -18,7 +18,7 @@ mysql -u root
 ## 2 DB 情報
 ```
 'localhost',
-'username' => 'user',
-'password' => 'pass',
+'username' => 'root',
+'password' => '',
 'database' => 'cake_php_sample',
 ```
