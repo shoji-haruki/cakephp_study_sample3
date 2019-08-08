@@ -7,6 +7,10 @@ version
 php 7.2.1
 cake 3.6.15
 ```
+## 一時公開URL
+```
+https://cakephp_sample.serveo.net
+```
 ### 1
 ```
 composer create-project --prefer-dist cakephp/app=3.6 cakephp_study_sample3
@@ -15,7 +19,7 @@ mysql -u root
     create database cake_php_sample;
     tavle.sql
 ```
-## 2 DB 情報
+## データベース情報
 ```
 'localhost',
 'username' => 'root',
