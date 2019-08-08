@@ -4,22 +4,20 @@
  * @var \App\Model\Entity\Message $message
  */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('List Messages'), ['action' => 'index']) ?></li>
-    </ul>
-</nav>
+
+<!-- 部分テンプレート呼び出し -->
+<?= $this->element('nav') ?>
+
 <div class="messages form large-9 medium-8 columns content">
     <?= $this->Form->create($message) ?>
     <fieldset>
-        <legend><?= __('Add Message') ?></legend>
+        <legend><?= __('問い合わせフォーム') ?></legend>
         <?php
             echo $this->Form->control('name');
             echo $this->Form->control('email');
             echo $this->Form->control('text');
         ?>
     </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
+    <?= $this->Form->button(__('送信')) ?>
     <?= $this->Form->end() ?>
 </div>
