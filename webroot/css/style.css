@@ -4,19 +4,19 @@ a.disabled {
 }
 
 a:hover {
-    color: #15848F;
+    color: #F78709;
 }
 
 a {
-    color: #1798A5;
+    color: #F4BF2D;
 }
 
 .side-nav li a:not(.button) {
-    color: #15848F;
+    color: #F4BF2D;
 }
 
 .side-nav li a:not(.button):hover {
-    color: #15848F;
+    color: #F78709;
 }
 
 header {
@@ -34,7 +34,7 @@ header .header-title {
 }
 
 legend {
-    color:#15848F;
+    color: #E17800;
 }
 
 .row {
@@ -43,13 +43,13 @@ legend {
 
 .actions.columns {
     margin-top:1rem;
-    border-left: 5px solid #15848F;
+    border-left: 5px solid #E17800;
     padding-left: 15px;
     padding: 32px 20px;
 }
 
 .actions.columns h3 {
-    color:#15848F;
+    color:#E17800;
 }
 
 .related table {
@@ -185,7 +185,7 @@ input[type=radio] {
     border-radius: 3px;
     box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.24);
     margin-right:0.7rem;
-    background-color:#DCE47E;
+    background-color:#F78709;
     color: #fff;
 }
 
@@ -231,7 +231,7 @@ p.notice {
 .notice,
 p.notice {
     color: #000000;
-    background: #ffcc00;
+    background: #F78709;
 }
 
 .cake-error,
@@ -319,20 +319,20 @@ pre {
 }
 
 .top-bar.expanded .title-area {
-    background: #01545b;
+    background: #F49E37;
 }
 
 .top-bar.expanded, .top-bar,.top-bar-section ul li,.top-bar-section li:not(.has-form) a:not(.button) {
-    background: #116d76;
+    background: #FBC77B;
 }
 
 .top-bar-section li:not(.has-form) a:not(.button):hover {
-    background-color: #308e97;
-    background: #308e97;
+    background-color: #FBC77B;
+    background: #FBC77B;
 }
 
 .side-nav li.heading {
-    color: #1798A5;
+    color: #F6750C;
     font-size: 0.875rem;
     font-weight: bold;
     text-transform: uppercase;
@@ -367,7 +367,7 @@ table tr {
 }
 
 table thead tr {
-    border-bottom: 1px solid #1798A5;
+    border-bottom: 1px solid #e17800;
 }
 
 table tr th {
@@ -375,7 +375,7 @@ table tr th {
     font-size: 0.875rem;
     color: #1798A5;
     text-align: left;
-    border-bottom: 2px solid #1798A5;
+    border-bottom: 2px solid #e17800;
 }
 
 table tr:nth-of-type(even) {
@@ -389,7 +389,7 @@ fieldset {
 }
 
 fieldset legend {
-    border-bottom: 2px solid #1798A5;
+    border-bottom: 2px solid #C33101;
     width: 100%;
     line-height: 2rem;
 }
@@ -406,7 +406,7 @@ fieldset legend {
 }
 
 button {
-    background: #966600;
+    background: #F8763A;
 }
 
 div.message {
