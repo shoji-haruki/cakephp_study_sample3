@@ -36,3 +36,15 @@ mysql -u root
     bin/cake bake migration AddPriceToProducts price:decimal
     Add[追加するカラム名]From[テーブル名] [カラム名（小文字）]:[型]
 ```
+## model controller
+```
+bake コマンドで使用できるオプション一覧
+bin/cake bake
+上記を全て作成　最後にテーブル名
+bin/cake bake all users
+```
+```
+キャッシュ削除
+cd [CakePHPのルートフォルダ]
+bin/cake cache clear_all
+```
