@@ -3,7 +3,5 @@
         <li class="heading"><?= __('メニュー') ?></li>
         <li><?= $this->Html->link(__('問い合わせ'), '/contact') ?></li>
         <li><?= $this->Html->link(__('管理者はこちら'), '/admin') ?></li>
-
-
     </ul>
 </nav>

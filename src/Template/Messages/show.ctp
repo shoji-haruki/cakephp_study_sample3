@@ -6,15 +6,14 @@
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('Edit Message'), ['action' => 'edit', $message->id]) ?> </li>
-        <li><?= $this->Form->postLink(__('Delete Message'), ['action' => 'delete', $message->id], ['confirm' => __('Are you sure you want to delete # {0}?', $message->id)]) ?> </li>
-        <li><?= $this->Html->link(__('List Messages'), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Message'), ['action' => 'add']) ?> </li>
+        <li class="heading"><?= __('メニュー') ?></li>
+        <li><?= $this->Html->link(__('編集'), ['action' => 'edit', $message->id]) ?> </li>
+        <li><?= $this->Form->postLink(__('削除'), ['action' => 'delete', $message->id], ['confirm' => __('Are you sure you want to delete # {0}?', $message->id)]) ?> </li>
+        <li><?= $this->Html->link(__('問い合せ一覧'), ['action' => 'index']) ?> </li>
     </ul>
 </nav>
 <div class="messages view large-9 medium-8 columns content">
-    <h3><?= h($message->name) ?></h3>
+    <h3>問い合せ詳細</h3>
     <table class="vertical-table">
         <tr>
             <th scope="row"><?= __('Name') ?></th>
@@ -38,7 +37,7 @@
         </tr>
     </table>
     <div class="row">
-        <h4><?= __('Text') ?></h4>
+        <h4><?= __('内容') ?></h4>
         <?= $this->Text->autoParagraph(h($message->text)); ?>
     </div>
 </div>
