@@ -6,12 +6,12 @@
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('New Message'), ['action' => 'add']) ?></li>
+        <li class="heading"><?= __('メニュー') ?></li>
+        <li><?= $this->Html->link(__('ログアウト'), '#') ?></li>
     </ul>
 </nav>
 <div class="messages index large-9 medium-8 columns content">
-    <h3><?= __('Messages') ?></h3>
+    <h3><?= __('問い合わせ一覧') ?></h3>
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
@@ -32,9 +32,9 @@
                 <td><?= h($message->created) ?></td>
                 <td><?= h($message->modified) ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $message->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $message->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $message->id], ['confirm' => __('Are you sure you want to delete # {0}?', $message->id)]) ?>
+                    <?= $this->Html->link(__('詳細'), ['action' => 'show', $message->id]) ?>
+                    <?= $this->Html->link(__('編集'), ['action' => 'edit', $message->id]) ?>
+                    <?= $this->Form->postLink(__('削除'), ['action' => 'delete', $message->id], ['confirm' => __('Are you sure you want to delete # {0}?', $message->id)]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>
