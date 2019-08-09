@@ -18,6 +18,10 @@ a {
 .side-nav li a:not(.button):hover {
     color: #F78709;
 }
+#logout-btn {
+    color: #454444;
+    font-weight: 900;
+}
 
 header {
     background-color: #D33C44;

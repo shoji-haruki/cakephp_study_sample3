@@ -44,8 +44,10 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         </ul>
         <div class="top-bar-section">
             <ul class="right">
-                <li><?= $this->Html->link(__('ログアウト'), ['controller' => 'users', 'action' => 'logout']) ?></li>
                 <li><a target="_blank" href="https://github.com/shoji-haruki/cakephp_study_sample3">GitHub</a></li>
+                <?php if($this->request->getSession()->read('Auth.User.id')):?>
+                    <li><a id="logout-btn" href="/users/logout">ログアウト</a></li>
+                <?php endif;?>
             </ul>
         </div>
     </nav>
