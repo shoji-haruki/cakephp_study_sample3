@@ -28,6 +28,8 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 
     <?= $this->Html->css('base.css') ?>
     <?= $this->Html->css('style.css') ?>
+    <?= $this->Html->css('top.css') ?>
+    <?= $this->Html->css('module/user.css') ?>
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
@@ -43,7 +45,11 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         <div class="top-bar-section">
             <ul class="right">
                 <li><a target="_blank" href="https://github.com/shoji-haruki/cakephp_study_sample3">GitHub</a></li>
-                <li><a target="_blank" href="#">自作API</a></li>
+
+                <?php if($this->request->getSession()->read('Auth.User.id')):?>
+                    <li><?= $this->Html->link(__('マイページ'), ['controller' => 'users', 'action' => 'view', $this->request->getSession()->read('Auth.User.id')]) ?></li>
+                    <li><a id="logout-btn" href="/users/logout">ログアウト</a></li>
+                <?php endif;?>
             </ul>
         </div>
     </nav>

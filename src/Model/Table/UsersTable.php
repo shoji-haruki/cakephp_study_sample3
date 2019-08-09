@@ -34,7 +34,7 @@ class UsersTable extends Table
         parent::initialize($config);
 
         $this->setTable('users');
-        $this->setDisplayField('name');
+        $this->setDisplayField('id');
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
@@ -47,30 +47,42 @@ class UsersTable extends Table
      * @return \Cake\Validation\Validator
      */
     public function validationDefault(Validator $validator)
+    // 書き換え
     {
-        $validator
-            ->integer('id')
-            ->allowEmpty('id', 'create');
-
-        $validator
-            ->scalar('name')
-            ->maxLength('name', 255)
-            ->requirePresence('name', 'create')
-            ->notEmpty('name');
-
-        $validator
-            ->email('email')
-            ->requirePresence('email', 'create')
-            ->notEmpty('email');
-
-        $validator
-            ->scalar('password')
-            ->maxLength('password', 255)
-            ->requirePresence('password', 'create')
-            ->notEmpty('password');
-
-        return $validator;
+        return $validator
+            ->notEmpty('username', 'A username is required')
+            ->notEmpty('password', 'A password is required')
+            ->notEmpty('role', 'A role is required')
+            ->add('role', 'inList', [
+                'rule' => ['inList', ['admin', 'author']],
+                'message' => 'Please enter a valid role'
+            ]);
     }
+    // 初期値
+    // {
+    //     $validator
+    //         ->integer('id')
+    //         ->allowEmpty('id', 'create');
+
+    //     $validator
+    //         ->scalar('name')
+    //         ->maxLength('name', 255)
+    //         ->requirePresence('name', 'create')
+    //         ->notEmpty('name');
+
+    //     $validator
+    //         ->email('email')
+    //         ->requirePresence('email', 'create')
+    //         ->notEmpty('email');
+
+    //     $validator
+    //         ->scalar('password')
+    //         ->maxLength('password', 255)
+    //         ->requirePresence('password', 'create')
+    //         ->notEmpty('password');
+
+    //     return $validator;
+    // }
 
     /**
      * Returns a rules checker object that will be used for validating
@@ -81,7 +93,7 @@ class UsersTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->isUnique(['email']));
+        $rules->add($rules->isUnique(['username']));
 
         return $rules;
     }
