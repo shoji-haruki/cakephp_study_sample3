@@ -5,7 +5,9 @@
  */
 ?>
 
+<nav class="large-3 medium-4 columns" id="actions-sidebar">
 
+</nav>
 <div class="users form large-9 medium-8 columns content">
     <div class="user-login">新規登録ページ</div>
     <?= $this->Form->create($user) ?>

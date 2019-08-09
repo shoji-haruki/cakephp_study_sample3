@@ -37,6 +37,7 @@ class AppController extends Controller
      *
      * @return void
      */
+    
     // public function beforeFilter() {
     //     // 認証コンポーネントをViewで利用可能にしておく
     //     $this->set('auth',$this->Auth);
