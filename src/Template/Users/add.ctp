@@ -4,22 +4,20 @@
  * @var \App\Model\Entity\User $user
  */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('List Users'), ['action' => 'index']) ?></li>
-    </ul>
-</nav>
+
+
 <div class="users form large-9 medium-8 columns content">
+    <div class="user-login">新規登録ページ</div>
     <?= $this->Form->create($user) ?>
     <fieldset>
-        <legend><?= __('Add User') ?></legend>
-        <?php
-            echo $this->Form->control('name');
-            echo $this->Form->control('email');
-            echo $this->Form->control('password');
-        ?>
+        <legend><?= __('必須項目（全て）を入力して登録してください') ?></legend>
+        <?= $this->Form->control('username') ?>
+        <?= $this->Form->control('password') ?>
+        <?= $this->Form->control('role', [
+            'options' => ['admin' => 'Admin', 'author' => 'Author']
+        ]) ?>
     </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
-    <?= $this->Form->end() ?>
+        <?= $this->Html->link(__('ログインへ'), ['action' => 'login']) ?>
+        <?= $this->Form->button(__('登録')) ?>
+        <?= $this->Form->end() ?>
 </div>
