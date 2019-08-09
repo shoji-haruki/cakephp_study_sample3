@@ -29,6 +29,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->Html->css('base.css') ?>
     <?= $this->Html->css('style.css') ?>
     <?= $this->Html->css('top.css') ?>
+    <?= $this->Html->css('module/user.css') ?>
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
@@ -43,8 +44,8 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         </ul>
         <div class="top-bar-section">
             <ul class="right">
+                <li><?= $this->Html->link(__('ログアウト'), ['controller' => 'users', 'action' => 'logout']) ?></li>
                 <li><a target="_blank" href="https://github.com/shoji-haruki/cakephp_study_sample3">GitHub</a></li>
-                <li><a target="_blank" href="#">自作API</a></li>
             </ul>
         </div>
     </nav>

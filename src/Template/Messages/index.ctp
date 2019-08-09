@@ -7,7 +7,7 @@
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('メニュー') ?></li>
-        <li><?= $this->Html->link(__('ログアウト'), '#') ?></li>
+        <li><?= $this->Html->link(__('管理者ログアウト'), '#') ?></li>
     </ul>
 </nav>
 <div class="messages index large-9 medium-8 columns content">
