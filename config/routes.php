@@ -53,8 +53,9 @@ Router::scope('/', function (RouteBuilder $routes) {
      * to use (in this case, src/Template/Pages/home.ctp)...
      */
     $routes->connect('/', ['controller' => 'messages', 'action' => 'top', 'home']);
-    $routes->connect('/admin', ['controller' => 'messages', 'action' => 'index', 'home']);
-    $routes->connect('/contact', ['controller' => 'messages', 'action' => 'add', 'home']);
+    // $routes->connect('/admin', ['controller' => 'messages', 'action' => 'index', 'home']);
+    $routes->connect('/admin/admin', ['controller' => 'admin', 'action' => 'login', 'prefix' => 'admin']);
+    // $routes->connect('/contact', ['controller' => 'messages', 'action' => 'add', 'home']);
 
     /**
      * ...and connect the rest of 'Pages' controller's URLs.
@@ -82,7 +83,9 @@ Router::scope('/', function (RouteBuilder $routes) {
      */
     $routes->fallbacks(DashedRoute::class);
 });
-
+Router::prefix('admin', function ($routes) {
+    $routes->fallbacks('DashedRoute');
+});
 /**
  * Load all plugin routes. See the Plugin documentation on
  * how to customize the loading of plugin routes.

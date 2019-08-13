@@ -20,6 +20,11 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 <head>
     <?= $this->Html->charset() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.js"
+    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/js/apibtn.js"></script>
     <title>
         <?= $cakeDescription ?>:
         <?= $this->fetch('title') ?>
@@ -47,7 +52,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                 <li><a target="_blank" href="https://github.com/shoji-haruki/cakephp_study_sample3">GitHub</a></li>
 
                 <?php if($this->request->getSession()->read('Auth.User.id')):?>
-                    <li><?= $this->Html->link(__('マイページ'), ['controller' => 'users', 'action' => 'view', $this->request->getSession()->read('Auth.User.id')]) ?></li>
+
                     <li><a id="logout-btn" href="/users/logout">ログアウト</a></li>
                 <?php endif;?>
             </ul>

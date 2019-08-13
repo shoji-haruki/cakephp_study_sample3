@@ -20,7 +20,7 @@
         </tr>
         <tr>
             <th scope="row"><?= __('Password') ?></th>
-            <td><?= h($user->password) ?></td>
+            <td>非表示</td>
         </tr>
     </table>
 </div>

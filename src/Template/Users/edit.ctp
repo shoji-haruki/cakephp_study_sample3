@@ -4,9 +4,8 @@
  * @var \App\Model\Entity\User $user
  */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-
-</nav>
+<!-- 部分テンプレート呼び出し -->
+<?= $this->element('nav') ?>
 <div class="users form large-9 medium-8 columns content">
     <?= $this->Form->create($user) ?>
     <fieldset>

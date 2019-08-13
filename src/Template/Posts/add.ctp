@@ -4,24 +4,21 @@
  * @var \App\Model\Entity\Post $post
  */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('List Posts'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
+<!-- 部分テンプレート呼び出し -->
+<?= $this->element('nav') ?>
 <div class="posts form large-9 medium-8 columns content">
     <?= $this->Form->create($post) ?>
     <fieldset>
-        <legend><?= __('Add Post') ?></legend>
+        <legend><?= __('新規投稿') ?></legend>
         <?php
             echo $this->Form->control('title');
             echo $this->Form->control('text');
-            echo $this->Form->control('user_id', ['options' => $users]);
+            // echo $this->Form->hidden( 名前 ,['value'=> 値 ]) ;
+            // echo $this->Form->hidden('user_id', ['options' => $users]);
+            echo $this->Form->hidden('user_id', ['value' => $user]);
+            // var_dump($user);
         ?>
     </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
+    <?= $this->Form->button(__('送信')) ?>
     <?= $this->Form->end() ?>
 </div>

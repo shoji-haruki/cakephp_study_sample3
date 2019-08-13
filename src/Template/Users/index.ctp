@@ -4,9 +4,8 @@
  * @var \App\Model\Entity\User[]|\Cake\Collection\CollectionInterface $users
  */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
+<?= $this->element('nav_admin') ?>
 
-</nav>
 <div class="users index large-9 medium-8 columns content">
     <h3><?= __('ユーザー一覧') ?></h3>
     <table cellpadding="0" cellspacing="0">

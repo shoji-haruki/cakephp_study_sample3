@@ -2,6 +2,8 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+// クライアント読み込み
+use Cake\Http\Client;
 
 /**
  * Messages Controller
@@ -18,6 +20,14 @@ class MessagesController extends AppController
      *
      * @return \Cake\Http\Response|void
      */
+
+    public function isAuthorized($user) {
+        if ($this->action === 'index') {
+            return true;
+        }
+
+        return parent::isAuthorized($user);
+    }
     public function index()
     {
         $messages = $this->paginate($this->Messages);
@@ -40,6 +50,68 @@ class MessagesController extends AppController
 
         $this->set('message', $message);
     }
+
+    // api用アクション
+    public function api()
+    {
+        $http = new Client();
+        $response = $http->get('http://zipcloud.ibsnet.co.jp/api/search');
+
+        // var_dump($response);
+        // $this->set(compact( $response);
+        // if ($http->isOk) {
+        //     $json = json_decode($response->body());
+        // }
+        // var_dump($json);
+    }
+    public $uses = array('User');
+
+    public function myapi(){
+
+    }
+
+
+    // 自作api
+
+    public function myapicustum()
+
+
+    {
+        // 今回はJSONのみを返すためViewのレンダーを無効化
+        $this->autoRender = false;
+        // Ajax以外の通信の場合
+        // if(!$this->request->is('ajax')) {
+        // throw new BadRequestException();
+        // }
+        /*  ここでDBアクセスなど何かの処理をする */
+        // $result = $this->$message->find('all');
+        $result = $users->getColumnTypes();
+        // 値が入っているかを確認。
+        // 値によっては(bool)でキャストしてしまうのも可
+        var_dump($result);
+        $status = !empty($result);
+        if(!$status) {
+        $error = array(
+            'message' => 'データがありません',
+            'code' => 404
+        );
+        }
+        // JSON形式で返却。errorが定義されていない場合はstatusとresultの配列になる。
+        return json_encode(compact('status', 'result', 'error'));
+    }
+
+        // $this->autoRender = false;
+        // // レスポンスの形式をJSONで指定
+        // $this->response->type('application/json');
+        // // $http = new Client();
+        // $response = $http->get('https://qiita.com/');
+        // var_dump($response);
+        // if ($http->isOk) {
+        //     $json = json_decode($response->body());
+        // }
+        // var_dump($json);
+
+
 
     /**
      * Add method
