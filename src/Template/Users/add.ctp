@@ -6,7 +6,9 @@
 ?>
 
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
-
+    <ul class="side-nav">
+        <li class="heading"><?= __('メッセージ') ?></li>
+        <li><a herf="" >新規登録またはログインしてください</a></li>
 </nav>
 <div class="users form large-9 medium-8 columns content">
     <div class="user-login">新規登録ページ</div>
