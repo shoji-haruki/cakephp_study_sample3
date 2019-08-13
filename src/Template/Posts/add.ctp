@@ -13,7 +13,10 @@
         <?php
             echo $this->Form->control('title');
             echo $this->Form->control('text');
-            echo $this->Form->control('user_id', ['options' => $users]);
+            // echo $this->Form->hidden( 名前 ,['value'=> 値 ]) ;
+            // echo $this->Form->hidden('user_id', ['options' => $users]);
+            echo $this->Form->hidden('user_id', ['value' => $user]);
+            // var_dump($user);
         ?>
     </fieldset>
     <?= $this->Form->button(__('送信')) ?>
