@@ -17,8 +17,8 @@
         <legend><?= __('必須項目（全て）を入力して登録してください') ?></legend>
         <?= $this->Form->control('username') ?>
         <?= $this->Form->control('password') ?>
-        <?= $this->Form->control('role', [
-            'options' => ['admin' => 'Admin', 'author' => 'Author']
+        <?= $this->Form->hidden('role', [
+            'value' => 'author'
         ]) ?>
     </fieldset>
         <?= $this->Html->link(__('ログインへ'), ['action' => 'login']) ?>

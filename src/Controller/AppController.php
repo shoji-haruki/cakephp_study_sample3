@@ -37,11 +37,28 @@ class AppController extends Controller
      *
      * @return void
      */
-    
+
     // public function beforeFilter() {
     //     // 認証コンポーネントをViewで利用可能にしておく
     //     $this->set('auth',$this->Auth);
     // }
+
+    // public $this->request->session() = array(
+    //     'Session',
+    //     'Auth' => array(
+    //         'loginRedirect' => array('controller' => 'pages', 'action' => 'display', 'home'),
+    //         'logoutRedirect' => array('controller' => 'users', 'action' => 'login'),
+    //         'authorize' => array('Controller')
+    //     )
+    // );
+    // public function isAuthorized($user) {
+    //     if (isset($user['role']) && $user['role'] === 'admin') {
+    //         return true;
+    //     }
+
+    //     return false;
+    // }
+    // $this->request->getSession()->read('Auth.User.id')
     public function initialize()
     {
         parent::initialize();
@@ -49,34 +66,72 @@ class AppController extends Controller
         $this->loadComponent('RequestHandler', [
             'enableBeforeRedirect' => false,
         ]);
-        $this->loadComponent('Flash');
-        // ログイン、ログアウト情報取得
-        // $user = $this->Auth->user();
-        // $this->set('user', $user);
+        if ($this->request->prefix == 'admin') {
+            $this->loadComponent('Flash');
+            // ログイン、ログアウト情報取得
+            // $user = $this->Auth->user();
+            // $this->set('user', $user);
 
-        $this->loadComponent('Auth', [
-            // ログイン時のリダイレクト先の定義
-            // コントローラーとアクションを書き換えで設定可能
-            'loginRedirect' => [
-                'controller' => 'messages',
-                'action' => 'top',
-                'home'
-            ],
-            // ログアウト時
-            'logoutRedirect' => [
-                'controller' => 'Users',
-                'action' => 'login'
-            ],
-            'authenticate' => [
-                'Form' => [
-                    'userModel' => 'Users',
-                    'fields' => [
-                        'username' => 'username',
-                        'password' => 'password'
+            $this->loadComponent(
+                'Auth', [
+                // ログイン時のリダイレクト先の定義
+                // コントローラーとアクションを書き換えで設定可能
+                'loginRedirect' => [
+                    'controller' => 'admin',
+                    'action' => 'top',
+
+                ],
+                // ログアウト時
+                'logoutRedirect' => [
+                    'controller' => 'admin',
+                    'action' => 'login'
+                ],
+                'authenticate' => [
+                    'Form' => [
+                        'userModel' => 'Users',
+                        'fields' => [
+                            'username' => 'username',
+                            'password' => 'password'
+                        ]
                     ]
-                ]
-            ],
-        ]);
+                ],
+                'authError' => 'ログインできませんでした。ログインしてください。'
+            ]);
+            $this->Auth->sessionKey = 'Admin';
+        } else {
+            $this->loadComponent('Flash');
+            // ログイン、ログアウト情報取得
+            // $user = $this->Auth->user();
+            // $this->set('user', $user);
+
+            $this->loadComponent(
+                'Auth', [
+                // ログイン時のリダイレクト先の定義
+                // コントローラーとアクションを書き換えで設定可能
+                'loginRedirect' => [
+                    'controller' => 'messages',
+                    'action' => 'top',
+                    'home'
+                ],
+                // ログアウト時
+                'logoutRedirect' => [
+                    'controller' => 'Users',
+                    'action' => 'login'
+                ],
+                'authenticate' => [
+                    'Form' => [
+                        'userModel' => 'Users',
+                        'fields' => [
+                            'username' => 'username',
+                            'password' => 'password'
+                        ]
+                    ]
+                ],
+                'authError' => 'ログインできませんでした。ログインしてください。'
+            ]);
+        }
+
+
         // 認証例外ページの指定
         $this->Auth->allow(['login','add']);
 

@@ -4,12 +4,8 @@
  * @var \App\Model\Entity\Message[]|\Cake\Collection\CollectionInterface $messages
  */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('メニュー') ?></li>
-        <li><?= $this->Html->link(__('管理者ログアウト'), '#') ?></li>
-    </ul>
-</nav>
+<?= $this->element('nav_admin') ?>
+
 <div class="messages index large-9 medium-8 columns content">
     <h3><?= __('問い合わせ一覧') ?></h3>
     <table cellpadding="0" cellspacing="0">
