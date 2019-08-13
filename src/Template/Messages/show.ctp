@@ -8,7 +8,7 @@
     <ul class="side-nav">
         <li class="heading"><?= __('メニュー') ?></li>
         <li><?= $this->Html->link(__('編集'), ['action' => 'edit', $message->id]) ?> </li>
-        <li><?= $this->Form->postLink(__('削除'), ['action' => 'delete', $message->id], ['confirm' => __('Are you sure you want to delete # {0}?', $message->id)]) ?> </li>
+        <li><?= $this->Form->postLink(__('削除'), ['action' => 'delete', $message->id], ['confirm' => __('削除していいですか？', $message->id)]) ?> </li>
         <li><?= $this->Html->link(__('問い合せ一覧'), ['action' => 'index']) ?> </li>
     </ul>
 </nav>
