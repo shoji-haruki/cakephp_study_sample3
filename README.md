@@ -55,3 +55,5 @@ mysql -u root -p   パス xxx
 cd [CakePHPのルートフォルダ]
 bin/cake cache clear_all
 ```
+## テスト
+vendor/bin/phpunit
