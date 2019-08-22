@@ -38,6 +38,9 @@ cd cakephp_study_sample3
 mysql -u root
     create database cake_php_sample;
     tavle.sql
+mysql -v 5.6.45
+docker exec -it b0e1e613cd0a bash
+mysql -u root -p   パス xxx
 ```
 ## データベース情報
 ```
@@ -52,3 +55,5 @@ mysql -u root
 cd [CakePHPのルートフォルダ]
 bin/cake cache clear_all
 ```
+## テスト
+vendor/bin/phpunit
