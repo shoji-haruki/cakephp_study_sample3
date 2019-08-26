@@ -56,7 +56,6 @@ class MessagesController extends AppController
     }
     // apiリクエストアクション
     // public function api()
-    // {
     //     $http = new Client();
     //     $response = $http->get('https://maps.googleapis.com/maps/api/js?key=AIzaSyAx9ceDdfuZPzme_j7SKVy0stkdpo5Qc44&callback=initMap ');
     //     // var_dump($response);
