@@ -11,6 +11,8 @@
     <h5><?= __('⇩ Gogle Maps JavaScript API ⇩') ?></h5>
     <div id="map"></div>
 </div>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAx9ceDdfuZPzme_j7SKVy0stkdpo5Qc44&callback=initMap"
+async defer></script>
 
 
 

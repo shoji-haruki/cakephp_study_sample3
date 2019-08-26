@@ -26,8 +26,6 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     src="https://code.jquery.com/jquery-3.4.1.js"
     integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
     crossorigin="anonymous"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAx9ceDdfuZPzme_j7SKVy0stkdpo5Qc44&callback=initMap"
-async defer></script>
     <script type="text/javascript" src="/js/apibtn.js"></script>
     <script type="text/javascript" src="/js/apigooglemap.js"></script>
     <title>
