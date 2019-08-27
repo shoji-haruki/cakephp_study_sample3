@@ -28,6 +28,13 @@ class PostsController extends AppController
         $this->set(compact('posts'));
     }
 
+    // public function index()
+    // {
+    //     $posts = $this->paginate($this->Posts);
+
+    //     $this->set(compact('posts'));
+    // }
+
     /**
      * View method
      *
@@ -55,6 +62,7 @@ class PostsController extends AppController
         $post = $this->Posts->newEntity();
         if ($this->request->is('post')) {
             $post = $this->Posts->patchEntity($post, $this->request->getData());
+            $post->user_id = $this->Auth->user('id');
             if ($this->Posts->save($post)) {
                 $this->Flash->success(__('The post has been saved.'));
 
@@ -84,6 +92,7 @@ class PostsController extends AppController
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $post = $this->Posts->patchEntity($post, $this->request->getData());
+            $post->user_id = $this->Auth->user('id');
             if ($this->Posts->save($post)) {
                 $this->Flash->success(__('The post has been saved.'));
 
@@ -113,5 +122,29 @@ class PostsController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
+    }
+    public function isAuthorized($user)
+    {
+    // 登録ユーザー全員が記事を追加できます
+    // 3.4.0 より前は $this->request->param('action') が使われました。
+    if ($this->request->getParam('action') === 'add') {
+        return true;
+    }
+
+    // 記事の所有者は編集して削除することができます
+    // 3.4.0 より前は $this->request->param('action') が使われました。
+    if (in_array($this->request->getParam('action'), ['edit', 'delete'])) {
+        // 3.4.0 より前は $this->request->params('pass.0')
+        $postId = (int)$this->request->getParam('pass.0');
+        if ($this->Articles->isOwnedBy($postId, $user['id'])) {
+            return true;
+        }
+    }
+    return parent::isAuthorized($user);
+}
+
+    public function isOwnedBy($postId, $userId)
+    {
+    return $this->exists(['id' => $postId, 'user_id' => $userId]);
     }
 }

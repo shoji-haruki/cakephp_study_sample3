@@ -38,6 +38,38 @@ class AppController extends Controller
      * @return void
      */
 
+    public function initialize()
+    {
+        $this->loadComponent('Flash');
+        $this->loadComponent('Auth', [
+            'loginRedirect' => [
+                'authorize' => ['Controller'],
+                'controller' => 'Messages',
+                'action' => 'top' ,
+                'home'
+            ],
+            // ログアウト時
+            'logoutRedirect' => [
+                'controller' => 'Users',
+                'action' => 'login',
+            ]
+        ]);
+    }
+
+    public function beforeFilter(Event $event)
+    {
+        $this->Auth->allow(['login','add','display','myapicustum']);
+    }
+
+    public function isAuthorized($user)
+    {
+    // 管理者はすべての操作にアクセスできます
+    if (isset($user['role']) && $user['role'] === 'admin') {
+        return true;
+    }
+    // デフォルトは拒否
+    return false;
+    }
     // public function beforeFilter() {
     //     // 認証コンポーネントをViewで利用可能にしておく
     //     $this->set('auth',$this->Auth);
@@ -59,81 +91,122 @@ class AppController extends Controller
     //     return false;
     // }
     // $this->request->getSession()->read('Auth.User.id')
-    public function initialize()
-    {
-        parent::initialize();
+    // public function initialize()
+    // {
+    //     parent::initialize();
 
-        $this->loadComponent('RequestHandler', [
-            'enableBeforeRedirect' => false,
-        ]);
-        if ($this->request->prefix == 'admin') {
-            $this->loadComponent('Flash');
-            // ログイン、ログアウト情報取得
-            // $user = $this->Auth->user();
-            // $this->set('user', $user);
+        // $this->loadComponent('RequestHandler', [
+        //     'enableBeforeRedirect' => false,
+        // ]);
+        // if ($this->request->prefix == 'admin') {
+        //     $this->loadComponent('Flash');
+        //     // ログイン、ログアウト情報取得
+        //     // $user = $this->Auth->user();
+        //     // $this->set('user', $user);
 
-            $this->loadComponent(
-                'Auth', [
-                // ログイン時のリダイレクト先の定義
-                // コントローラーとアクションを書き換えで設定可能
-                'loginRedirect' => [
-                    'controller' => 'admin',
-                    'action' => 'top',
+        //     $this->loadComponent(
+        //         'Auth', [
+        //         // ログイン時のリダイレクト先の定義
+        //         // コントローラーとアクションを書き換えで設定可能
+        //         'loginRedirect' => [
+        //             'controller' => 'admin',
+        //             'action' => 'top',
 
-                ],
-                // ログアウト時
-                'logoutRedirect' => [
-                    'controller' => 'admin',
-                    'action' => 'login'
-                ],
-                'authenticate' => [
-                    'Form' => [
-                        'userModel' => 'Users',
-                        'fields' => [
-                            'username' => 'username',
-                            'password' => 'password'
-                        ]
-                    ]
-                ],
-                'authError' => 'ログインできませんでした。ログインしてください。'
-            ]);
-            $this->Auth->sessionKey = 'Admin';
-        } else {
-            $this->loadComponent('Flash');
-            // ログイン、ログアウト情報取得
-            // $user = $this->Auth->user();
-            // $this->set('user', $user);
+        //         ],
+        //         // ログアウト時
+        //         'logoutRedirect' => [
+        //             'controller' => 'admin',
+        //             'action' => 'login'
+        //         ],
+        //         'authenticate' => [
+        //             'Form' => [
+        //                 'userModel' => 'Users',
+        //                 'fields' => [
+        //                     'username' => 'username',
+        //                     'password' => 'password'
+        //                 ]
+        //             ]
+        //         ],
+        //         'authError' => 'ログインできませんでした。ログインしてください。'
+        //     ]);
+        //     $this->Auth->sessionKey = 'Admin';
+        // }
 
-            $this->loadComponent(
-                'Auth', [
-                // ログイン時のリダイレクト先の定義
-                // コントローラーとアクションを書き換えで設定可能
-                'loginRedirect' => [
-                    'controller' => 'messages',
-                    'action' => 'top',
-                    'home'
-                ],
-                // ログアウト時
-                'logoutRedirect' => [
-                    'controller' => 'Users',
-                    'action' => 'login'
-                ],
-                'authenticate' => [
-                    'Form' => [
-                        'userModel' => 'Users',
-                        'fields' => [
-                            'username' => 'username',
-                            'password' => 'password'
-                        ]
-                    ]
-                ],
-                'authError' => 'ログインできませんでした。ログインしてください。'
-            ]);
-        }
 
+    //     public function initialize()
+    //     {
+    //         parent::initialize();
+
+    //         $this->loadComponent('RequestHandler', [
+    //             'enableBeforeRedirect' => false,
+    //         ]);
+    //         if ($this->request->prefix == 'admin') {
+    //             $this->loadComponent('Flash');
+    //             // ログイン、ログアウト情報取得
+    //             // $user = $this->Auth->user();
+    //             // $this->set('user', $user);
+
+    //             $this->loadComponent(
+    //                 'Auth', [
+    //                 // ログイン時のリダイレクト先の定義
+    //                 // コントローラーとアクションを書き換えで設定可能
+    //                 'loginRedirect' => [
+    //                     'controller' => 'admin',
+    //                     'action' => 'top',
+
+    //                 ],
+    //                 // ログアウト時
+    //                 'logoutRedirect' => [
+    //                     'controller' => 'admin',
+    //                     'action' => 'login'
+    //                 ],
+    //                 'authenticate' => [
+    //                     'Form' => [
+    //                         'userModel' => 'Users',
+    //                         'fields' => [
+    //                             'username' => 'username',
+    //                             'password' => 'password'
+    //                         ]
+    //                     ]
+    //                 ],
+    //                 'authError' => 'ログインできませんでした。ログインしてください。'
+    //             ]);
+    //             $this->Auth->sessionKey = 'Admin';
+    //         } else {
+    //             $this->loadComponent('Flash');
+    //             // ログイン、ログアウト情報取得
+    //             // $user = $this->Auth->user();
+    //             // $this->set('user', $user);
+
+    //             $this->loadComponent(
+    //                 'Auth', [
+    //                 // ログイン時のリダイレクト先の定義
+    //                 // コントローラーとアクションを書き換えで設定可能
+    //                 'loginRedirect' => [
+    //                     'controller' => 'messages',
+    //                     'action' => 'top',
+    //                     'home'
+    //                 ],
+    //                 // ログアウト時
+    //                 'logoutRedirect' => [
+    //                     'controller' => 'Users',
+    //                     'action' => 'login'
+    //                 ],
+    //                 'authenticate' => [
+    //                     'Form' => [
+    //                         'userModel' => 'Users',
+    //                         'fields' => [
+    //                             'username' => 'username',
+    //                             'password' => 'password'
+    //                         ]
+    //                     ]
+    //                 ],
+    //                 'authError' => 'ログインできませんでした。ログインしてください。'
+    //             ]);
+    //         }
 
         // 認証例外ページの指定
-        $this->Auth->allow(['login','add','display','myapicustum']);
+        // $this->Auth->allow(['login','add','display','myapicustum']);
 
 
         // 初期
@@ -146,5 +219,5 @@ class AppController extends Controller
          */
         //$this->loadComponent('Security');
         //$this->loadComponent('Csrf');
-    }
 }
+
