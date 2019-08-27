@@ -133,7 +133,7 @@ class AppController extends Controller
 
 
         // 認証例外ページの指定
-        $this->Auth->allow(['login','add', 'display']);
+        $this->Auth->allow(['login','add','display','myapicustum']);
 
 
         // 初期

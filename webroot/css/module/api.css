@@ -1,9 +1,13 @@
 #map {
     height: 55vh;
-    margin:1.5rem 0.8rem 0.8rem;
+    margin: 1.5rem 0.8rem 0.8rem;
 }
 
 .error_message {
     font-weight: bold;
     color: black;
+}
+
+#response {
+    margin: 1.5rem 0.8rem 0.8rem;
 }
