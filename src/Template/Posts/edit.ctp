@@ -13,7 +13,9 @@
         <?php
             echo $this->Form->control('title');
             echo $this->Form->control('text');
-            echo $this->Form->control('user_id', ['options' => $users]);
+            $this->Form->hidden('user_id', ['options' => $users
+            ])
+            // echo $this->Form->control('user_id', ['options' => $users]);
         ?>
     </fieldset>
     <?= $this->Form->button(__('送信')) ?>

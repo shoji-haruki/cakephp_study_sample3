@@ -20,11 +20,14 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 <head>
     <?= $this->Html->charset() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta name="viewport" content="initial-scale=1.0"> -->
+    <meta charset="utf-8">
     <script
     src="https://code.jquery.com/jquery-3.4.1.js"
     integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
     crossorigin="anonymous"></script>
     <script type="text/javascript" src="/js/apibtn.js"></script>
+    <script type="text/javascript" src="/js/apigooglemap.js"></script>
     <title>
         <?= $cakeDescription ?>:
         <?= $this->fetch('title') ?>
@@ -35,6 +38,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->Html->css('style.css') ?>
     <?= $this->Html->css('top.css') ?>
     <?= $this->Html->css('module/user.css') ?>
+    <?= $this->Html->css('module/api.css') ?>
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
