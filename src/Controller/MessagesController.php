@@ -67,6 +67,11 @@ class MessagesController extends AppController
         $json_data = $this->response->body(json_encode($data));
     }
 
+    public function jobapi()
+    {
+        
+    }
+
     /**
      * Add method
      *

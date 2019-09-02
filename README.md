@@ -31,6 +31,11 @@ bin/cake bake
 上記を全て作成　最後にテーブル名
 bin/cake bake all users
 ```
+## ローカルサーバー
+```
+bin/cake server
+http://localhost:8765/
+```
 ### mysql
 ```
 composer create-project --prefer-dist cakephp/app=3.6 cakephp_study_sample3
